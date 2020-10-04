@@ -1,4 +1,10 @@
 # vue-fetch-mixin
+
+[![build status](https://img.shields.io/travis/maartenvn/vue-fetch-mixin)](https://travis-ci.org/maartenvn/vue-fetch-mixin)
+[![npm version](https://img.shields.io/npm/v/vue-fetch-mixin)](https://www.npmjs.com/vue-fetch-mixin)
+[![npm downloads](https://img.shields.io/npm/dm/vue-fetch-mixin)](http://npm-stat.com/charts.html?package=vue-fetch-mixin)
+
+
 Mixin for easy data fetching in Vue. Prevents unnecesarry boilerplate code and offers a much more intuative workflow. Inspired by the Nuxt.JS `fetch` hook.
 
 
@@ -39,11 +45,22 @@ export default {
 ```
 
 **Global level:**
+
+Vue 2:
 ```js
 import Vue from "vue";
 import fetchMixin from "vue-fetch-mixin";
 
 Vue.mixin(fetchMixin);
+```
+
+Vue 3:
+```js
+import { createApp } from "vue";
+import fetchMixin from "vue-fetch-mixin";
+
+const app = createApp(App);
+app.mixin(fetchMixin)
 ```
 
 ### Use in components
