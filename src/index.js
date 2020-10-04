@@ -8,18 +8,18 @@ export default {
                 /**
                  * If the fetch is loading.
                  */
-                isLoading: () => this.$fetchState.loading === true,
+                isLoading: () => this.$data.$fetchState.loading,
     
                 /**
                  * If the fetch has succeeded.
                  */
                 isSuccess: () =>
-                    !this.$fetchState.loading && !this.$fetchState.error,
+                    !this.$data.$fetchState.loading && !this.$data.$fetchState.error,
     
                 /**
                  * If the fetch has failed.
                  */
-                isError: () => this.$fetchState.error === true
+                isError: () => this.$data.$fetchState.error !== null
             },
     
             $fetchState: {
@@ -42,15 +42,15 @@ export default {
     created: async function() {
         // Make sure the `fetch` option is present.
         if (hasFetch(this)) {
-            this.$fetchState.loading = true;
+            this.$data.$fetchState.loading = true;
 
             // Attempt to call the fetch function
             try {
                 await this.$options.fetch.call(this);
             } catch (err) {
-                this.$fetchState.error = err;
+                this.$data.$fetchState.error = err;
             } finally {
-                this.$fetchState.loading = false;
+                this.$data.$fetchState.loading = false;
             }
         }
     }
